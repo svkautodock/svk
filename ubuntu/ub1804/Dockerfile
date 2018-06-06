@@ -5,6 +5,7 @@ RUN apt update && \
 apt install -y sudo vim wget net-tools openssh-server supervisor iputils-ping iproute2 nmap tzdata
 RUN useradd -s /bin/bash -m svkdokr && (echo "12345";echo "12345")|passwd svkdokr \
 && usermod -aG sudo svkdokr \
+&& mkdir /svk-$(date +%d%b%Y) \
 ### Set IST TimeZOne ###
 && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime \
 && dpkg-reconfigure -f noninteractive tzdata
